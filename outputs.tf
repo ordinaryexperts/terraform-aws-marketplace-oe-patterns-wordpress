@@ -28,16 +28,6 @@ output "dns_site_url_output" {
   value       = aws_cloudformation_stack.oe_patterns_wordpress.outputs["DnsSiteUrlOutput"]
 }
 
-output "source_artifact_bucket_name_output" {
-  description = "The source artifact S3 bucket name that is monitored for updates to be deployed"
-  value       = aws_cloudformation_stack.oe_patterns_wordpress.outputs["SourceArtifactBucketNameOutput"]
-}
-
-output "source_artifact_object_key_output" {
-  description = "The source artifact S3 object key that is monitored for updates to be deployed"
-  value       = aws_cloudformation_stack.oe_patterns_wordpress.outputs["SourceArtifactObjectKeyOutput"]
-}
-
 output "first_use_instructions" {
   description = "Instructions for getting started."
   value       = aws_cloudformation_stack.oe_patterns_wordpress.outputs["FirstUseInstructions"]
