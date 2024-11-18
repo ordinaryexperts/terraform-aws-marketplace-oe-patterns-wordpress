@@ -1,43 +1,3 @@
-variable "initialize_default_wordpress" {
-  type        = bool
-  default     = true
-  description = "Optional: Trigger the first deployment with a copy of an initial default codebase from Ordinary Experts using WordPress Bedrock"
-}
-
-variable "notification_email" {
-  type        = string
-  default     = ""
-  description = "Optional: Specify an email address to get emails about deploys and other system events."
-}
-
-variable "pipeline_artifact_bucket_name" {
-  type        = string
-  default     = ""
-  description = "Optional: Specify a bucket name for the CodePipeline pipeline to use. The bucket must be in this same AWS account. This can be handy when re-creating this template many times."
-}
-
-variable "source_artifact_bucket_name" {
-  type        = string
-  default     = ""
-  description = "Optional: Specify a S3 bucket name which will contain the build artifacts for the application. If not specified, a bucket will be created."
-}
-
-variable "source_artifact_object_key" {
-  type        = string
-  default     = "wordpress.zip"
-  description = "Required: AWS S3 object key (path) for the build artifact for the application. Updates to this object will trigger a deployment."
-}
-
-variable "wordpress_env" {
-  type        = string
-  default     = "production"
-  description = "Optional: The environment (WP_ENV) for the WordPress site."
-  validation {
-    condition = contains(["development", "staging", "production"], var.wordpress_env)
-    error_message = "Valid value is one of the following: development, staging, production."
-  }  
-}
-
 variable "stack_name" {
   type        = string
   description = "Name of the CloudFormation stack"
@@ -122,6 +82,12 @@ variable "dns_hostname" {
   description = "Optional: The hostname to access the service."
 }
 
+variable "ses_instance_user_access_key_serial" {
+  type        = string
+  default     = "1"
+  description = "Optional: Incrementing this integer value will trigger a rotation."
+}
+
 variable "ses_create_domain_identity" {
   type        = bool
   default     = true
@@ -187,17 +153,17 @@ variable "efs_automatic_backups_status" {
   type        = string
   default     = "ENABLED"
   validation {
-    condition = contains(["ENABLED", "DISABLED"], var.efs_automatic_backups_status)
+    condition     = contains(["ENABLED", "DISABLED"], var.efs_automatic_backups_status)
     error_message = "Valid value is one of the following: ENABLED, DISABLED."
-  }  
+  }
 }
 
 variable "efs_transition_to_ia" {
   description = "Describes the period of time that a file is not accessed, after which it transitions to IA storage. Metadata operations such as listing the contents of a directory don't count as file access events."
   type        = string
   default     = ""
-  validation { 
-    condition = contains(["", "AFTER_7_DAYS", "AFTER_14_DAYS", "AFTER_30_DAYS", "AFTER_60_DAYS", "AFTER_90_DAYS"], var.efs_transition_to_ia)
+  validation {
+    condition     = contains(["", "AFTER_7_DAYS", "AFTER_14_DAYS", "AFTER_30_DAYS", "AFTER_60_DAYS", "AFTER_90_DAYS"], var.efs_transition_to_ia)
     error_message = "Valid value is one of the following: '', AFTER_7_DAYS, AFTER_14_DAYS, AFTER_30_DAYS, AFTER_60_DAYS, AFTER_90_DAYS."
   }
 }
@@ -206,10 +172,22 @@ variable "efs_transition_to_primary_storage_class" {
   description = "Describes when to transition a file from IA storage to primary storage. Metadata operations such as listing the contents of a directory don't count as file access events."
   type        = string
   default     = ""
-  validation { 
-    condition = contains(["", "AFTER_1_ACCESS"], var.efs_transition_to_primary_storage_class)
+  validation {
+    condition     = contains(["", "AFTER_1_ACCESS"], var.efs_transition_to_primary_storage_class)
     error_message = "Valid value is one of the following: '', AFTER_1_ACCESS."
   }
+}
+
+variable "custom_wp_config_parameter_arn" {
+  description = "Optional: ARN of SSM Parameter Store Secure String containing custom PHP code to put into wp-config.php."
+  default     = ""
+  type        = string
+}
+
+variable "wordpress_arn" {
+  description = "Optional: Secrets Manager Secret ARN used to store WordPress credentials. If not specified, a secret will be created."
+  type        = string
+  default     = ""
 }
 
 variable "alb_certificate_arn" {
