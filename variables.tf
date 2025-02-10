@@ -124,6 +124,12 @@ variable "asg_instance_type" {
   default     = "t3.micro"
 }
 
+variable "asg_key_name" {
+  description = "Optional: The EC2 key pair name for the instance."
+  type        = string
+  default     = ""
+}
+
 variable "asg_reprovision_string" {
   description = "Optional: Changes to this parameter will force instance reprovision on the next CloudFormation update."
   type        = string
