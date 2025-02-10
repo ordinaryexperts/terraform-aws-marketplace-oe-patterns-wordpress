@@ -20,6 +20,7 @@ resource "aws_cloudformation_stack" "oe_patterns_wordpress" {
     AlbIngressCidr                     = var.alb_ingress_cidr
     AsgDesiredCapacity                 = var.asg_desired_capacity
     AsgInstanceType                    = var.asg_instance_type
+    AsgKeyName                         = var.asg_key_name
     AsgMaxSize                         = var.asg_max_size
     AsgMinSize                         = var.asg_min_size
     AsgReprovisionString               = var.asg_reprovision_string
