@@ -1,5 +1,9 @@
 # Unreleased
 
+# 2.0.1
+
+* Adding AsgKeyName variable
+
 # 2.0.0
 
 * Update to OE Pattern version 2.0.0 - WordPress version 6.6.1
