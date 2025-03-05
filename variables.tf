@@ -94,6 +94,17 @@ variable "ses_create_domain_identity" {
   description = "Optional: If 'true', a SES Domain Identity will be created from the hosted zone."
 }
 
+variable "enable_sftp" {
+  type        = bool
+  default     = false
+  description = "Required: Enable SFTP support via NLB. You also need to specify AsgKeyName parameter to connect."
+}
+
+variable "sftp_ingress_cidr" {
+  description = "Required (only used if Enable SFTP is true): VPC IPv4 CIDR block to restrict access to inbound SFTP connections. Set to '0.0.0.0/0' to allow all access, or set to 'X.X.X.X/32' to restrict to one IP (replace Xs with your IP), or set to another CIDR range."
+  type        = string
+}
+
 variable "db_secret_arn" {
   type        = string
   default     = ""

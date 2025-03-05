@@ -16,7 +16,9 @@ run "provision_wordpress" {
     alb_ingress_cidr = "0.0.0.0/0"
     dns_hostname = "${run.setup_tests.stack_prefix}-wordpress-test.test.patterns.ordinaryexperts.com"
     dns_route53_hosted_zone_name = "test.patterns.ordinaryexperts.com"
+    enable_sftp = true
     ses_create_domain_identity = false
+    sftp_ingress_cidr = "0.0.0.0/0"
     stack_name = "${run.setup_tests.stack_prefix}-wordpress-test"
   }
 
