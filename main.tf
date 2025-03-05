@@ -11,7 +11,7 @@ terraform {
 resource "aws_cloudformation_stack" "oe_patterns_wordpress" {
   name = var.stack_name
 
-  template_url = "https://s3.amazonaws.com/awsmp-fulfillment-cf-templates-prod/f3bfa640-c230-4a34-9c4a-91d4a98f9a2e.204b7a2ce3934313b5c5d82c83c0cc96.template"
+  template_url = "https://awsmp-cft-992382380361-1708727387563.s3.us-east-1.amazonaws.com/1606be39-a3c6-430f-8699-9b15a9b4b673/1606be39-a3c6-430f-8699-9b15a9b4b673/f3bfa640-c230-4a34-9c4a-91d4a98f9a2e/520fb4fc-6052-4507-b9a7-044cd5626bba/template.yaml"
 
   capabilities = ["CAPABILITY_NAMED_IAM"]
 
@@ -31,11 +31,13 @@ resource "aws_cloudformation_stack" "oe_patterns_wordpress" {
     DbSnapshotIdentifier               = var.db_snapshot_identifier
     DnsHostname                        = var.dns_hostname
     DnsRoute53HostedZoneName           = var.dns_route53_hosted_zone_name
+    EnableSftp                         = var.enable_sftp
     EfsAutomaticBackupsStatus          = var.efs_automatic_backups_status
     EfsTransitionToIa                  = var.efs_transition_to_ia
     EfsTransitionToPrimaryStorageClass = var.efs_transition_to_primary_storage_class
     SesCreateDomainIdentity            = var.ses_create_domain_identity
     SesInstanceUserAccessKeySerial     = var.ses_instance_user_access_key_serial
+    SftpIngressCidr                    = var.sftp_ingress_cidr
     VpcCidr                            = var.vpc_cidr
     VpcId                              = var.vpc_id
     VpcNatGatewayPerSubnet             = var.vpc_nat_gateway_per_subnet
