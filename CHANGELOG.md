@@ -1,5 +1,11 @@
 # Unreleased
 
+# 2.1.0
+
+* Update to OE WordPress Pattern version 2.1.0 - WordPress version 6.7.2
+* Adding EnableSftp parameter
+* Adding SftpIngressCidr parameter
+
 # 2.0.1
 
 * Adding AsgKeyName variable
