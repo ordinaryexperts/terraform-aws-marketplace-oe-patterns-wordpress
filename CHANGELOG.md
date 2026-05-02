@@ -1,5 +1,9 @@
 # Unreleased
 
+# 3.0.0
+
+* Update to OE WordPress Pattern version 3.0.0 - WordPress 6.9.4, Aurora MySQL 8.0, EFS-backed wp-content, optional NLB SFTP. See the pattern repo CHANGELOG for breaking changes (notably the AMI parameter rename to `AsgAmiIdv300`, which means existing 2.x stacks cannot be updated in place).
+
 # 2.1.0
 
 * Update to OE WordPress Pattern version 2.1.0 - WordPress version 6.7.2
