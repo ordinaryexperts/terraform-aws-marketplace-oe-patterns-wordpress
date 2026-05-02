@@ -11,7 +11,7 @@ terraform {
 resource "aws_cloudformation_stack" "oe_patterns_wordpress" {
   name = var.stack_name
 
-  template_url = "https://awsmp-cft-992382380361-1708727387563.s3.us-east-1.amazonaws.com/1606be39-a3c6-430f-8699-9b15a9b4b673/1606be39-a3c6-430f-8699-9b15a9b4b673/f3bfa640-c230-4a34-9c4a-91d4a98f9a2e/520fb4fc-6052-4507-b9a7-044cd5626bba/template.yaml"
+  template_url = "https://awsmp-cft-053155443450-1579814207723.s3.us-east-1.amazonaws.com/b16a27f3-e239-4da0-b27a-7ee39101d9b4/b16a27f3-e239-4da0-b27a-7ee39101d9b4/template.yaml"
 
   capabilities = ["CAPABILITY_NAMED_IAM"]
 
