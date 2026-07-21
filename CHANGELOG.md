@@ -1,5 +1,9 @@
 # Unreleased
 
+# 3.1.0
+
+* Update to OE WordPress Pattern version 3.1.0 - WordPress 7.0.2 (was 6.9.4). No CloudFormation parameter changes; `template_url` updated to the new Marketplace-hosted version.
+
 # 3.0.0
 
 * Update to OE WordPress Pattern version 3.0.0 - WordPress 6.9.4, Aurora MySQL 8.0, EFS-backed wp-content, optional NLB SFTP. See the pattern repo CHANGELOG for breaking changes (notably the AMI parameter rename to `AsgAmiIdv300`, which means existing 2.x stacks cannot be updated in place).
